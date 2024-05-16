@@ -9,7 +9,7 @@ import Projects from "./components/Projects";
 import Hireme from "./components/Hireme";
 import Contact from "./components/Contact";
 import Cursor from "./components/Cursor";
-
+import Certificate from "./components/Certificate";
 function App() {
   const [sec, setSec] = useState(0);
   const [vis, setVis] = useState(false);
@@ -57,6 +57,7 @@ function App() {
         <Skills />
         <Service />
         <Projects />
+        <Certificate />
         <Hireme />
         <Contact />
         <Cursor />

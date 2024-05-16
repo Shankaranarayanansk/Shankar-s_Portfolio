@@ -1,4 +1,3 @@
-//import Hero_person from "./assets/images/Hero/person.png";
 import Hero_person from "./assets/images/Hero/perons1.png";
 import figma from "./assets/images/Skills/figma.png";
 import Git from "./assets/images/Skills/git.jpg";
@@ -17,8 +16,14 @@ import services_logo2 from "./assets/images/Services/logo2.png";
 import services_logo3 from "./assets/images/Services/logo3.jpg";
 import project1 from "./assets/images/projects/img1.png";
 import project2 from "./assets/images/projects/img2.png";
-import project3 from "./assets/images/projects/img3.png";
+import project3 from "./assets/images/projects/prj3.jpg";
 import person_project from "./assets/images/projects/person_project.png";
+import IBM from "./assets/images/Certification/SQL.jpg";
+import Tailwind from "./assets/images/Certification/Tailwind.jpg";
+import ES from "./assets/images/Certification/Embedded System.jpg";
+import java from "./assets/images/Certification/Java.jpg";
+import js from "./assets/images/Certification/JS.jpg";
+import Nw from "./assets/images/Certification/Networking.jpg";
 import Hireme_person1 from "./assets/images/Hireme/person1.png";
 import Hireme_person2 from "./assets/images/Hireme/person2.jpg";
 import { GrMail } from "react-icons/gr";
@@ -26,6 +31,8 @@ import { MdArrowForward } from "react-icons/md";
 import { BsWhatsapp } from "react-icons/bs";
 import { TbSmartHome } from "react-icons/tb";
 import { BiSolidYinYang } from "react-icons/bi";
+import { GrCertificate } from "react-icons/gr";
+import { FaHireAHelper } from "react-icons/fa6";
 import { BiWrench , BiSolidContact,BiSolidSelectMultiple }  from "react-icons/bi";
 export const content = {
   nav: [
@@ -46,9 +53,19 @@ export const content = {
       icon: BiSolidSelectMultiple,
     },
     {
+      link: "#certificate",
+      icon:GrCertificate,
+    },
+    {
+      link: "#hire",
+      icon: FaHireAHelper,
+    },
+    {
       link: "#contact",
       icon: BiSolidContact,
     },
+   
+   
   ],
   hero: {
     title: '"A Passionate Web Developer"',
@@ -247,13 +264,56 @@ export const content = {
         githubUrl: "project_1_github_url",
       },
       {
-        title: "Creative Website",
+        title: "1 to 1 Video Call React+Zeegocloud",
         image: project3,
         livePreviewUrl: "project_1_live_preview_url",
         githubUrl: "project_1_github_url",
       },
     ],
   },
+  Certificate: {
+    title: "Certifications",
+    subtitle: "I'm Certified as",
+    Certificate_content: [
+      {
+        review:
+          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+        img: ES,
+        name: "JOHN DOE",
+      },
+      {
+        review:
+          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+        img: java,
+        name: "Tom Alex",
+      },
+      {
+        review:
+          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+        img: IBM,
+        name: "Johnny",
+      },
+      {
+        review:
+          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+        img: Tailwind,
+        name: "ROBBIN",
+      },
+      {
+        review:
+          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+        img: Nw,
+        name: "ROBBIN",
+      },
+      {
+        review:
+          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+        img: js,
+        name: "ROBBIN",
+      },
+    ],
+},
+
 
   Hireme: {
     title: "Hire Me",
