@@ -277,39 +277,39 @@ export const content = {
     Certificate_content: [
       {
         review:
-          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+          "“Certified in embedded systems and equipped with the skills to design, develop, and optimize. Ready to bring innovative solutions to complex problems, ensuring efficiency and performance in every project. Let's collaborate!”",
         img: ES,
-        name: "JOHN DOE",
+        name: "Intrainz Industrial Training",
       },
       {
         review:
-          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+          "“Java certified and equipped with the skills to design, develop, and optimize. Ready to bring innovative solutions to complex problems, ensuring efficiency and performance in every project. Let's collaborate!”",
         img: java,
-        name: "Tom Alex",
+        name: "NPTEL",
       },
       {
         review:
-          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+          "“Certified in SQL with expertise in database design, development, and optimization. Ready to deliver innovative solutions to complex data challenges, ensuring data integrity and performance. Let's work together!”",
         img: IBM,
-        name: "Johnny",
+        name: "IBM Cognitive Class",
       },
       {
         review:
-          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+          "“Tailwind CSS certified and proficient in crafting responsive, modern, and efficient designs. Ready to transform your web projects with clean, maintainable, and scalable styles. Let's create something amazing together!”",
         img: Tailwind,
-        name: "ROBBIN",
+        name: "Udemy Learning Platform",
       },
       {
         review:
-          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+          "“Networking essentials certified, skilled in designing, configuring, and troubleshooting networks. Ready to optimize connectivity, security, and performance for your infrastructure. Let's build robust networks together!”",
         img: Nw,
-        name: "ROBBIN",
+        name: "Cisco Networking Academy",
       },
       {
         review:
-          "“In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstra”",
+          "“JavaScript certified, adept at crafting dynamic and interactive web solutions. Ready to innovate with clean, efficient, and scalable code. Let's create engaging experiences together!”",
         img: js,
-        name: "ROBBIN",
+        name: "Udemy Learning Platform",
       },
     ],
 },
