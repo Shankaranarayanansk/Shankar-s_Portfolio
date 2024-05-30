@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { content } from "../Content";
-import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa"; 
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { BiSolidShareAlt } from "react-icons/bi";
+import CountUp from "react-countup";
+import ScrollTrigger from "react-scroll-trigger";
 
 const Hero = () => {
   const { hero } = content;
   const [isMobileView, setIsMobileView] = useState(false);
+  const [count, setCount] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,13 +39,19 @@ const Hero = () => {
             <BiSolidShareAlt size={34} />
           </div>
           {isMobileView && (
-             <h1 className={`rotate-90 absolute ${isMobileView ? "top-[20%] right-[-45%]" : "top-[40%] right-[-50%]"} text-dark_primary ${isMobileView ? "md:hidden" : "hidden md:block"}`}>
-             {hero.firstName}{" "}
- <span className="text-[#EAF2FA] ">{hero.LastName}</span>
-           </h1>
-   
+            <h1
+              className={`rotate-90 absolute ${
+                isMobileView
+                  ? "top-[20%] right-[-45%]"
+                  : "top-[40%] right-[-50%]"
+              } text-dark_primary ${
+                isMobileView ? "md:hidden" : "hidden md:block"
+              }`}
+            >
+              {hero.firstName}{" "}
+              <span className="text-[#EAF2FA] ">{hero.LastName}</span>
+            </h1>
           )}
-         
         </div>
 
         {/* First Column */}
@@ -52,11 +61,31 @@ const Hero = () => {
           <div className="flex items-center gap-5">
             {/* Social Media Icons */}
             <div className="flex gap-3">
-              <a href="https://www.instagram.com/bruceleeshankar202/" target="_blank" rel="noopener noreferrer"><FaInstagram size={30}/></a>
-              <a href="https://github.com/Shankaranarayanansk/" target="_blank" rel="noopener noreferrer"><FaGithub size={30}/></a>
-              <a href="https://www.linkedin.com/in/shankaranarayanansk/?originalSubdomain=in" target="_blank" rel="noopener noreferrer"><FaLinkedin size={30} /></a>
+              <a
+                href="https://www.instagram.com/bruceleeshankar202/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaInstagram size={30} />
+              </a>
+              <a
+                href="https://github.com/Shankaranarayanansk/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaGithub size={30} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/shankaranarayanansk/?originalSubdomain=in"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaLinkedin size={30} />
+              </a>
             </div>
-            <button className="btn" onClick={scrollToContact}>{hero.btnText}</button>
+            <button className="btn" onClick={scrollToContact}>
+              {hero.btnText}
+            </button>
           </div>
           <div className="flex flex-col gap-10 mt-10">
             {hero.hero_content.map((content, i) => (
@@ -64,9 +93,24 @@ const Hero = () => {
                 key={i}
                 data-aos="fade-down"
                 data-aos-delay={i * 300}
-                className={`flex items-center w-80 gap-5 ${i === 1 && "flex-row-reverse text-right"}`}
+                className={`flex items-center w-80 gap-5 ${
+                  i === 1 && "flex-row-reverse text-right"
+                }`}
               >
-                <h3>{content.count}</h3>
+                <ScrollTrigger onEnter={() => setCount(true)} onExit={() => setCount(false)}>
+                  <h3>
+                   
+                    {count&&
+                    <CountUp
+                      start={0}
+                      end={content.count}
+                      duration={2}
+                      delay={3}
+                      className="text-5xl font-bold"
+                    />}+
+                  </h3>
+                </ScrollTrigger>
+
                 <p>{content.text}</p>
               </div>
             ))}
@@ -78,7 +122,7 @@ const Hero = () => {
           <img
             src={hero.image}
             data-aos="slide-up"
-            alt="..."
+            alt="loading"
             className="h-full object-cover"
           />
         </div>

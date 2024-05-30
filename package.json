@@ -14,11 +14,13 @@
     "aos": "^2.3.4",
     "ionicons": "^7.2.2",
     "react": "^18.2.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.12.0",
     "react-modal": "^3.16.1",
     "react-responsive": "^9.0.2",
+    "react-scroll-trigger": "^0.6.14",
     "react-share-social": "^0.1.55",
     "sweetalert2": "^11.10.4",
     "swiper": "^8.4.4"

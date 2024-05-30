@@ -32,8 +32,8 @@ import { BsWhatsapp } from "react-icons/bs";
 import { TbSmartHome } from "react-icons/tb";
 import { BiSolidYinYang } from "react-icons/bi";
 import { GrCertificate } from "react-icons/gr";
-import { FaHireAHelper } from "react-icons/fa6";
-import { BiWrench , BiSolidContact,BiSolidSelectMultiple }  from "react-icons/bi";
+// import { FaHireAHelper } from "react-icons/fa6";
+import { BiWrench , BiSolidContact }  from "react-icons/bi";
 export const content = {
   nav: [
     {
@@ -49,16 +49,8 @@ export const content = {
       icon: BiWrench,
     },
     {
-      link: "#projects",
-      icon: BiSolidSelectMultiple,
-    },
-    {
       link: "#certificate",
       icon:GrCertificate,
-    },
-    {
-      link: "#hire",
-      icon: FaHireAHelper,
     },
     {
       link: "#contact",
@@ -75,11 +67,11 @@ export const content = {
     image: Hero_person,
     hero_content: [
       {
-        count: "8+",
+        count: "8",
         text: "Skills in Web development",
       },
       {
-        count: "20+",
+        count: "20",
         text: "Projects enhanced my web development skills in my non-academic time ",
       },
     ],
