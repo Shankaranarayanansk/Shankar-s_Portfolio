@@ -105,7 +105,7 @@ const Hero = () => {
                       start={0}
                       end={content.count}
                       duration={2}
-                      delay={3}
+                      delay={1.5}
                       className="text-5xl font-bold"
                     />}+
                   </h3>
