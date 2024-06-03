@@ -60,7 +60,6 @@ export const content = {
    
   ],
   hero: {
-    title: '"A Passionate Web Developer"',
     firstName: "Shankar",
     LastName: "Developer",
     btnText: "Say Hello",
