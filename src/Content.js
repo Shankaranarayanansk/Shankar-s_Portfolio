@@ -17,6 +17,7 @@ import services_logo3 from "./assets/images/Services/logo3.jpg";
 import project1 from "./assets/images/projects/img1.png";
 import project2 from "./assets/images/projects/img2.png";
 import project3 from "./assets/images/projects/prj3.jpg";
+import project4 from "./assets/images/projects/prj4.png";
 import person_project from "./assets/images/projects/person_project.png";
 import IBM from "./assets/images/Certification/SQL.jpg";
 import Tailwind from "./assets/images/Certification/Tailwind.jpg";
@@ -259,6 +260,12 @@ export const content = {
         image: project3,
         livePreviewUrl: "project_1_live_preview_url",
         githubUrl: "project_1_github_url",
+      },
+      {
+        title: "Crytocurrency Tracker (React+Coin Gekco API)",
+        image: project4,
+        livePreviewUrl: "https://cryto-tracker-shankaranarayanansk.vercel.app/",
+        githubUrl: "https://github.com/Shankaranarayanansk/Crytocurrency_Tracker.git",
       },
     ],
   },

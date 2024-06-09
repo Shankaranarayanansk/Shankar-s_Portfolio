@@ -193,7 +193,7 @@ const Hero = () => {
         </div>
 
         {/* Second Column */}
-        <div className="md:h-[37rem] h-96">
+        <div className="md:h-[37rem] h-96 ">
           <img
             src={hero.image}
             data-aos="slide-up"
