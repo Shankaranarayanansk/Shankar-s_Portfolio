@@ -93,44 +93,38 @@ const Hero = () => {
               <BiSolidShareAlt size={34} />
             </button>
           </div>
-          {isMobileView && (
-            <h1
-              className={`rotate-90 absolute ${
-                isMobileView
-                  ? "top-[20%] right-[-45%]"
-                  : "top-[40%] right-[-50%]"
-              } text-dark_primary ${
-                isMobileView ? "md:hidden" : "hidden md:block"
-              }`}
-            >
-              {hero.firstName}{" "}
-              <span className="text-[#EAF2FA] ">{hero.LastName}</span>
-            </h1>
-          )}
         </div>
-
         {/* First Column */}
         <div className="pb-16 px-6 pt-5" data-aos="fade-down">
-        <h2 className="inline-block min-w-[500px]">
-  A Passionate <span></span>
-  <span className="relative">
-    <Typewriter
-      words={["Developer", "Influencer", "Freelancer"]}
-      loop={true}
-      cursor
-      cursorStyle="!"
-      typeSpeed={70}
-      deleteSpeed={50}
-      delaySpeed={1000}
-      className="inline-block min-w-[500px]"
-    />
-  </span>
-
-          </h2>
+          <div className="hidden md:block">
+            <h2 className="py-10 text-center md:text-left">
+              Hi there👋I'm Shankaranarayanansk
+            </h2>
+          </div>
+          <div className="md:hidden">
+            <h2 className="py-10 text-center">Hi there👋I'm Shankar</h2>
+          </div>
+          <div className="flex flex-col md:flex-row items-center md:items-start">
+            <h2 className="inline-block min-w-[300px] md:min-w-[500px] text-center md:text-left">
+              A Passionate <span></span>
+              <span className="relative">
+                <Typewriter
+                  words={["Full Stack Developer", "Influencer", "Freelancer"]}
+                  loop={true}
+                  cursor
+                  cursorStyle="!"
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1000}
+                  className="inline-block"
+                />
+              </span>
+            </h2>
+          </div>
           <br />
           <br />
-          <div className="flex items-center gap-5">
-            {/* Social Media Icons */}
+             {/* Social Media Icons */}
+          <div className="flex  gap-5 ">
             <div className="flex gap-3">
               <a
                 href="https://www.instagram.com/bruceleeshankar202/"
@@ -158,14 +152,14 @@ const Hero = () => {
               {hero.btnText}
             </button>
           </div>
-          <div className="flex flex-col gap-10 mt-10">
+          <div className="flex flex-col gap-10 mt-10 ">
             {hero.hero_content.map((content, i) => (
               <div
                 key={i}
                 data-aos="fade-down"
                 data-aos-delay={i * 300}
                 className={`flex items-center w-80 gap-5 ${
-                  i === 1 && "flex-row-reverse text-right"
+                  i === 1 && "flex-row-reverse text-right "
                 }`}
               >
                 <ScrollTrigger
