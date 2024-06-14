@@ -18,6 +18,7 @@ import project1 from "./assets/images/projects/img1.png";
 import project2 from "./assets/images/projects/img2.png";
 import project3 from "./assets/images/projects/prj3.jpg";
 import project4 from "./assets/images/projects/prj4.png";
+import project5 from "./assets/images/projects/prj5.png";
 import person_project from "./assets/images/projects/person_project.png";
 import IBM from "./assets/images/Certification/SQL.jpg";
 import Tailwind from "./assets/images/Certification/Tailwind.jpg";
@@ -252,7 +253,7 @@ export const content = {
       {
         title: "Tesla_car_site_Clone",
         image: project2,
-        livePreviewUrl: "https://teslasite-sankar-clone.web.app/",
+        livePreviewUrl: "https://tesla-site-tailwind-css.vercel.app/",
         githubUrl: "project_1_github_url",
       },
       {
@@ -266,6 +267,12 @@ export const content = {
         image: project4,
         livePreviewUrl: "https://cryto-tracker-shankaranarayanansk.vercel.app/",
         githubUrl: "https://github.com/Shankaranarayanansk/Crytocurrency_Tracker.git",
+      },
+      {
+        title: "Budget Manager (React + Local Storage)",
+        image: project5,
+        livePreviewUrl: "https://budget-manger-shankaranarayanansk.vercel.app/",
+        githubUrl: "https://github.com/Shankaranarayanansk/Budget_Monitor.git",
       },
     ],
   },
