@@ -10,20 +10,17 @@ import Hireme from "./components/Hireme";
 import Contact from "./components/Contact";
 import Cursor from "./components/Cursor";
 import Certificate from "./components/Certificate";
-import Offline from "./components/Offline"; // Import the Offline component
-
+import Offline from "./components/Offline"; // Import the Offline component 
 function App() {
   const [sec, setSec] = useState(0);
   const [vis, setVis] = useState(false);
   const [show, setShow] = useState(true); // Set show to true initially
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-
   useEffect(() => {
     Aos.init({
       duration: 2000,
       offset: 100,
     });
-
     setShow(true);
 
     const intervalId = setInterval(() => {
@@ -34,7 +31,6 @@ function App() {
       clearInterval(intervalId);
       setVis(true);
     }, 2600);
-
     // Event listeners for online/offline status
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);

@@ -19,6 +19,7 @@ import project2 from "./assets/images/projects/img2.png";
 import project3 from "./assets/images/projects/prj3.jpg";
 import project4 from "./assets/images/projects/prj4.png";
 import project5 from "./assets/images/projects/prj5.png";
+import project6 from "./assets/images/projects/prj6.png";
 import person_project from "./assets/images/projects/person_project.png";
 import IBM from "./assets/images/Certification/SQL.jpg";
 import Tailwind from "./assets/images/Certification/Tailwind.jpg";
@@ -271,7 +272,15 @@ export const content = {
       {
         title: "Budget Manager (React + Local Storage)",
         image: project5,
-        livePreviewUrl: "https://budget-manger-shankaranarayanansk.vercel.app/",
+        livePreviewUrl: "https://datewithdevelopment.vercel.app/",
+        githubUrl: "https://github.com/Shankaranarayanansk/Budget_Monitor.git",
+      },
+      {
+        title: "Date with Development Hub for juniors(React + Tailwind)",
+        image: project6,
+
+
+        livePreviewUrl: "https://datewithdevelopment.vercel.app",
         githubUrl: "https://github.com/Shankaranarayanansk/Budget_Monitor.git",
       },
     ],

@@ -1,10 +1,7 @@
 import { content } from "../Content";
-// Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
-// Import Swiper core and required modules
 import { Pagination, Autoplay } from "swiper";
 import { useState } from "react";
 
@@ -27,8 +24,8 @@ const Certificate = () => {
             clickable: true,
           }}
           autoplay={{
-            delay: 3000, // Adjust the delay as needed
-            disableOnInteraction: false, // Allow autoplay to continue after user interactions
+            delay: 2000, // Adjust the delay as needed
+            disableOnInteraction: false,
           }}
           data-aos="fade-up"
           loop={true}
