@@ -10,18 +10,21 @@ import Hireme from "./components/Hireme";
 import Contact from "./components/Contact";
 import Cursor from "./components/Cursor";
 import Certificate from "./components/Certificate";
-import Offline from "./components/Offline"; // Import the Offline component 
+import Offline from "./components/Offline";
+import Particles from "react-tsparticles";
+import { loadFull } from "tsparticles";
+
 function App() {
   const [sec, setSec] = useState(0);
   const [vis, setVis] = useState(false);
-  const [show, setShow] = useState(true); // Set show to true initially
+  const [show, setShow] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+
   useEffect(() => {
     Aos.init({
       duration: 2000,
       offset: 100,
     });
-    setShow(true);
 
     const intervalId = setInterval(() => {
       setSec((prevSec) => (prevSec < data.length - 1 ? prevSec + 1 : prevSec));
@@ -31,7 +34,11 @@ function App() {
       clearInterval(intervalId);
       setVis(true);
     }, 2600);
-    // Event listeners for online/offline status
+
+    setTimeout(() => {
+      setShow(false);
+    }, 3600);
+
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
 
@@ -47,37 +54,55 @@ function App() {
 
   const data = ["Hello", "This", "Shankaranarayananask"];
 
+  const particlesInit = async (main) => {
+    await loadFull(main);
+  };
+
+  const particlesLoaded = (container) => {
+    console.log(container);
+  };
+
   return (
     <div className="overflow-x-hidden">
       {!isOnline ? (
-        <Offline /> // Show the Offline component if not online
+        <Offline />
       ) : (
         <div>
-          <div
-            className={`bg-[#222222] h-screen flex justify-center items-center ${
-              vis
-                ? "-translate-y-full duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)]"
-                : ""
-            } ${show ? "hidden" : ""}`}
-          >
-            <span className="p-1 bg-white rounded-full"></span>
-            <div className="px-4 text-white text-[40px]">{data[sec]}</div>
-          </div>
-          <div>
-            <Navbar />
-            <Hero />
-            <Skills />
-            <Service />
-            <Projects />
-            <Certificate />
-            <Hireme />
-            <Contact />
-            <Cursor />
-            <footer className="p-3 text-center">
-              <h6 className="mb-3">Shankar Dev</h6>
-              <p>shankaranarayanansk© All CopyRights Reserved 2024</p>
-            </footer>
-          </div>
+          <Particles
+            id="tsparticles"
+            init={particlesInit}
+            loaded={particlesLoaded}
+            options={{
+              // ... (particle options remain the same)
+            }}
+          />
+          {show && (
+            <div
+              className={`#b8cdf4 h-screen flex justify-center items-center ${
+                vis ? "-translate-y-full duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)]" : ""
+              }`}
+            >
+              <span className="p-1 bg-white rounded-full"></span>
+              <div className="px-4 text-navy-700 text-[40px] font-bold">{data[sec]}</div>
+            </div>
+          )}
+          {!show && (
+            <div>
+              <Navbar />
+              <Hero />
+              <Skills />
+              <Service />
+              <Projects />
+              <Certificate />
+              <Hireme />
+              <Contact />
+              <Cursor />
+              <footer className="p-3 text-center">
+                <h6 className="mb-3">Shankar Dev</h6>
+                <p>shankaranarayanansk© All CopyRights Reserved 2024</p>
+              </footer>
+            </div>
+          )}
         </div>
       )}
     </div>
