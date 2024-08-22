@@ -12,6 +12,7 @@
     "@emailjs/browser": "^3.9.1",
     "@heroicons/vue": "^2.1.1",
     "aos": "^2.3.4",
+    "gsap": "^3.12.5",
     "ionicons": "^7.2.2",
     "lucide-react": "^0.382.0",
     "react": "^18.3.1",

@@ -1,5 +1,5 @@
 import { content } from "../Content";
-import cv from "../assets/My CV.pdf";
+import cv from "../assets/My-CV.pdf";
 const Hireme = () => {
   const { Hireme } = content;
   const scrollToContact = () => {
@@ -42,7 +42,7 @@ const Hireme = () => {
               <button className="btn bg-dark_primary text-white mb-4 md:mb-0" onClick={scrollToContact}>
                 {Hireme.btnText}
               </button>
-              <a href={cv} download="Shankar's CV" className="btn bg-dark_primary text-white">Download CV</a>
+              <a href={cv} download="Shankaranarayanansk_CV" className="btn bg-dark_primary text-white">Download CV</a>
             </div>
           </div>
         </div>

@@ -13,12 +13,15 @@ import Certificate from "./components/Certificate";
 import Offline from "./components/Offline";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function App() {
   const [sec, setSec] = useState(0);
   const [vis, setVis] = useState(false);
   const [show, setShow] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
+  const data = ["Hello", "This", "is", "Aspiring", "Developer", "Shankaranarayanansk"];
 
   useEffect(() => {
     Aos.init({
@@ -28,16 +31,16 @@ function App() {
 
     const intervalId = setInterval(() => {
       setSec((prevSec) => (prevSec < data.length - 1 ? prevSec + 1 : prevSec));
-    }, 200);
+    }, 600);
 
     setTimeout(() => {
       clearInterval(intervalId);
       setVis(true);
-    }, 2600);
+    }, data.length * 600 + 100);
 
     setTimeout(() => {
       setShow(false);
-    }, 3600);
+    }, data.length * 600 + 1000);
 
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
@@ -45,14 +48,28 @@ function App() {
     window.addEventListener("online", handleOnline);
     window.addEventListener("offline", handleOffline);
 
+    // GSAP ScrollTrigger animations
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.utils.toArray('[data-scroll]').forEach(section => {
+      gsap.from(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 80%',
+          end: 'bottom top',
+          scrub: true
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1
+      });
+    });
+
     return () => {
       clearInterval(intervalId);
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
     };
   }, []);
-
-  const data = ["Hello", "This", "Shankaranarayananask"];
 
   const particlesInit = async (main) => {
     await loadFull(main);
@@ -73,17 +90,85 @@ function App() {
             init={particlesInit}
             loaded={particlesLoaded}
             options={{
-              // ... (particle options remain the same)
+              particles: {
+                number: {
+                  value: 100,
+                  density: {
+                    enable: true,
+                    value_area: 800
+                  }
+                },
+                color: {
+                  value: "#ffffff"
+                },
+                shape: {
+                  type: "circle",
+                  stroke: {
+                    width: 0,
+                    color: "#000000"
+                  }
+                },
+                opacity: {
+                  value: 0.6,
+                  random: false,
+                  anim: {
+                    enable: true,
+                    speed: 1,
+                    opacity_min: 0.1,
+                    sync: false
+                  }
+                },
+                size: {
+                  value: 3,
+                  random: true,
+                  anim: {
+                    enable: true,
+                    speed: 3,
+                    size_min: 1,
+                    sync: false
+                  }
+                },
+                move: {
+                  enable: true,
+                  speed: 1,
+                  direction: "none",
+                  random: false,
+                  straight: false,
+                  out_mode: "out",
+                  bounce: false,
+                  attract: {
+                    enable: false,
+                    rotateX: 600,
+                    rotateY: 1200
+                  }
+                }
+              },
+              interactivity: {
+                detect_on: "canvas",
+                events: {
+                  onhover: {
+                    enable: false,
+                    mode: "repulse"
+                  },
+                  onclick: {
+                    enable: false,
+                    mode: "push"
+                  },
+                  resize: true
+                }
+              },
+              retina_detect: true
             }}
           />
           {show && (
             <div
-              className={`#b8cdf4 h-screen flex justify-center items-center ${
+              className={`bg-primaryLinear h-screen flex justify-center items-center ${
                 vis ? "-translate-y-full duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)]" : ""
               }`}
             >
-              <span className="p-1 bg-white rounded-full"></span>
-              <div className="px-4 text-navy-700 text-[40px] font-bold">{data[sec]}</div>
+              <h1 className="px-4 text-navy-700 text-[70px] font-bold text-center" id='opener'>
+                {data[sec]}
+              </h1>
             </div>
           )}
           {!show && (

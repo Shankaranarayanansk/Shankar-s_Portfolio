@@ -5,6 +5,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Paprika&display=swap");
 
+@import url("https://fonts.cdnfonts.com/css/ronald-charis");
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -75,6 +78,11 @@
   top: 0;
   left: 0;
   z-index: -1;
+}
+#opener
+{
+  font-family: 'Ronald Charis', sans-serif;
+  /* font-size: larger; */
 }
 ::-webkit-scrollbar {
   width: 10px; /* width of the scrollbar track */

@@ -1,19 +1,17 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { content } from "../Content";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
 import { BiSolidShareAlt } from "react-icons/bi";
 import CountUp from "react-countup";
 import ScrollTrigger from "react-scroll-trigger";
 import Modal from "react-modal";
-import { X } from "lucide-react";
+import { X, Copy, Check } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
 import {
   EmailShareButton,
   FacebookShareButton,
   TwitterShareButton,
   WhatsappShareButton,
-} from "react-share";
-import {
   EmailIcon,
   FacebookIcon,
   TwitterIcon,
@@ -44,6 +42,7 @@ const Hero = () => {
   const [count, setCount] = useState(false);
   const [modalIsOpen, setIsOpen] = useState(false);
   const [shareUrl, setShareUrl] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -58,6 +57,10 @@ const Hero = () => {
     };
   }, []);
 
+  useEffect(() => {
+    setShareUrl(window.location.href);
+  }, []);
+
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     if (contactSection) {
@@ -66,43 +69,39 @@ const Hero = () => {
   };
 
   const handleShareClick = () => {
-    console.log("handleShareClick called");
-    openModal();
-  };
-
-  const openModal = () => {
-    const currentUrl = window.location.href;
-    setShareUrl(currentUrl);
     setIsOpen(true);
   };
 
   const closeModal = () => {
     setIsOpen(false);
+    setIsCopied(false);
+  };
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(shareUrl).then(() => {
+      setIsCopied(true);
+      setTimeout(() => setIsCopied(false), 2000);
+    });
   };
 
   return (
     <section id="home" className="overflow-hidden">
       <div className="min-h-screen relative flex md:flex-row flex-col-reverse md:items-end justify-center items-center">
+      <button onClick={handleShareClick} className="share-button bg-white/40 p-2 rounded-lg absolute top-4 right-40">
+              <BiSolidShareAlt size={28} />
+            </button>
         <div
           data-aos="slide-left"
           data-aos-delay="1200"
           className="absolute h-full md:w-4/12 w-8/12 top-0 right-0 bg-primaryLinear bottom-0 -z-10"
-        >
-          <div className="sm:cursor-pointer fixed top-10 left-20 z-[999] rounded-lg bg-white/40 p-2 hidden lg:block">
-            <button onClick={handleShareClick} className="share-button">
-              <BiSolidShareAlt size={34} />
-            </button>
-          </div>
-        </div>
+        />
         {/* First Column */}
         <div className="pb-16 px-6 pt-5" data-aos="fade-down">
-          <div className="hidden md:block">
-            <h2 className="py-10 text-center md:text-left">
-              Hi there👋I'm Shankaranarayanansk
-            </h2>
-          </div>
-          <div className="md:hidden">
-            <h2 className="py-10 text-center">Hi there👋I'm Shankar</h2>
+          <div className="flex justify-between items-center mb-4">
+            <div className={isMobileView ? "text-center" : "text-left"}>
+              <h2>Hi there👋I'm {isMobileView ? "Shankar" : "Shankaranarayanansk"}</h2>
+            </div>
+          
           </div>
           <div className="flex flex-col md:flex-row items-center md:items-start">
             <h2 className="inline-block min-w-[300px] md:min-w-[500px] text-center md:text-left">
@@ -123,8 +122,8 @@ const Hero = () => {
           </div>
           <br />
           <br />
-             {/* Social Media Icons */}
-          <div className="flex  gap-5 ">
+          {/* Social Media Icons */}
+          <div className="flex gap-5">
             <div className="flex gap-3">
               <a
                 href="https://www.instagram.com/bruceleeshankar202/"
@@ -152,14 +151,14 @@ const Hero = () => {
               {hero.btnText}
             </button>
           </div>
-          <div className="flex flex-col gap-10 mt-10 ">
+          <div className="flex flex-col gap-10 mt-10">
             {hero.hero_content.map((content, i) => (
               <div
                 key={i}
                 data-aos="fade-down"
                 data-aos-delay={i * 300}
                 className={`flex items-center w-80 gap-5 ${
-                  i === 1 && "flex-row-reverse text-right "
+                  i === 1 && "flex-row-reverse text-right"
                 }`}
               >
                 <ScrollTrigger
@@ -179,7 +178,6 @@ const Hero = () => {
                     +
                   </h3>
                 </ScrollTrigger>
-
                 <p>{content.text}</p>
               </div>
             ))}
@@ -187,7 +185,7 @@ const Hero = () => {
         </div>
 
         {/* Second Column */}
-        <div className="md:h-[37rem] h-96 ">
+        <div className="md:h-[37rem] h-96">
           <img
             src={hero.image}
             data-aos="slide-up"
@@ -207,8 +205,8 @@ const Hero = () => {
           <button onClick={closeModal} className="self-end">
             <X size={24} />
           </button>
-          <h2 className="mb-4">Share this page</h2>
-          <div className="flex gap-4">
+          <h2 className="mb-4 text-[30px]" id='opener'>Share this page</h2>
+          <div className="flex gap-4 mb-4">
             <EmailShareButton url={shareUrl}>
               <EmailIcon size={32} round />
             </EmailShareButton>
@@ -222,6 +220,23 @@ const Hero = () => {
               <WhatsappIcon size={32} round />
             </WhatsappShareButton>
           </div>
+          <div className="flex items-center gap-2">
+            <input
+              type="text"
+              value={shareUrl}
+              readOnly
+              className="border rounded px-2 py-1 w-64"
+            />
+            <button
+              onClick={handleCopyLink}
+              className="bg-blue-500 text-white rounded p-2"
+            >
+              {isCopied ? <Check size={20} /> : <Copy size={20} />}
+            </button>
+          </div>
+          {isCopied && (
+            <p className="text-green-500 mt-2">Link copied!</p>
+          )}
         </div>
       </Modal>
     </section>
