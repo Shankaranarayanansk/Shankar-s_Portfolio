@@ -36,7 +36,6 @@ import { BsWhatsapp } from "react-icons/bs";
 import { TbSmartHome } from "react-icons/tb";
 import { BiSolidYinYang } from "react-icons/bi";
 import { GrCertificate } from "react-icons/gr";
-// import { FaHireAHelper } from "react-icons/fa6";
 import { BiWrench , BiSolidContact }  from "react-icons/bi";
 export const content = {
   nav: [

@@ -87,9 +87,12 @@ const Hero = () => {
   return (
     <section id="home" className="overflow-hidden">
       <div className="min-h-screen relative flex md:flex-row flex-col-reverse md:items-end justify-center items-center">
-      <button onClick={handleShareClick} className="share-button bg-white/40 p-2 rounded-lg absolute top-4 right-40">
-              <BiSolidShareAlt size={28} />
-            </button>
+        <button
+          onClick={handleShareClick}
+          className="share-button bg-white/40 p-2 rounded-lg absolute top-4 right-40"
+        >
+          <BiSolidShareAlt size={28} />
+        </button>
         <div
           data-aos="slide-left"
           data-aos-delay="1200"
@@ -99,9 +102,10 @@ const Hero = () => {
         <div className="pb-16 px-6 pt-5" data-aos="fade-down">
           <div className="flex justify-between items-center mb-4">
             <div className={isMobileView ? "text-center" : "text-left"}>
-              <h2>Hi there👋I'm {isMobileView ? "Shankar" : "Shankaranarayanansk"}</h2>
+              <h2>
+                Hi there👋I'm {isMobileView ? "Shankar" : "Shankaranarayanansk"}
+              </h2>
             </div>
-          
           </div>
           <div className="flex flex-col md:flex-row items-center md:items-start">
             <h2 className="inline-block min-w-[300px] md:min-w-[500px] text-center md:text-left">
@@ -205,7 +209,9 @@ const Hero = () => {
           <button onClick={closeModal} className="self-end">
             <X size={24} />
           </button>
-          <h2 className="mb-4 text-[30px]" id='opener'>Share this page</h2>
+          <h2 className="mb-4 text-[30px]" id="opener">
+            Share this page
+          </h2>
           <div className="flex gap-4 mb-4">
             <EmailShareButton url={shareUrl}>
               <EmailIcon size={32} round />
@@ -234,9 +240,7 @@ const Hero = () => {
               {isCopied ? <Check size={20} /> : <Copy size={20} />}
             </button>
           </div>
-          {isCopied && (
-            <p className="text-green-500 mt-2">Link copied!</p>
-          )}
+          {isCopied && <p className="text-green-500 mt-2">Link copied!</p>}
         </div>
       </Modal>
     </section>

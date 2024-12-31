@@ -1,71 +1,56 @@
-import {useState } from "react";
+import { useState } from "react";
 import { content } from "../Content";
-import Modal from "react-modal";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    maxWidth: "23rem",
-    width: "90%",
-  },
-  overlay: {
-    padding: "2rem",
-  },
+const Modal = ({ isOpen, onClose, children }) => {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-lg max-w-md w-full p-6 relative">
+        <div className="max-h-[80vh] overflow-y-auto">{children}</div>
+      </div>
+    </div>
+  );
 };
-
-Modal.setAppElement("#root");
 
 const Skills = () => {
   const { skills } = content;
   const [modalIsOpen, setIsOpen] = useState(false);
   const [selectSkill, setSelectSkill] = useState(null);
 
-  function openModal(skill) {
+  const openModal = (skill) => {
     setSelectSkill(skill);
     setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  };
 
   return (
-    <section className="min-h-fit bg-bg_light_primary" id="skills">
-      <Modal isOpen={modalIsOpen} onRequestClose={closeModal} style={customStyles}>
+    <section className="bg-bg_light_primary py-16" id="skills">
+      <Modal isOpen={modalIsOpen} onClose={() => setIsOpen(false)}>
         {selectSkill && (
-          <div>
-            <div className="flex items-center gap-2">
-              <img className="h-10" src={selectSkill.logo} alt="..." />
-              <h6>{selectSkill.name}</h6>
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center p-2">
+                <img className="w-full h-full object-contain" src={selectSkill.logo} alt="" />
+              </div>
+              <h3 className="text-lg font-semibold">{selectSkill.name}</h3>
             </div>
-            <br />
-            <ul className="list-decimal px-4 font-Poppins sm:text-sm text-xs !leading-7">
+            <ul className="ml-5 space-y-2 list-decimal text-sm text-gray-600">
               {selectSkill.skills.map((skill, index) => (
                 <li key={index}>{skill}</li>
               ))}
             </ul>
-            <br />
-            <div className="flex justify-end">
-              <button onClick={closeModal} className="btn">
-                Close
-              </button>
-            </div>
+            <button 
+              onClick={() => setIsOpen(false)}
+              className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 ml-auto block transition-colors"
+            >
+              Close
+            </button>
           </div>
         )}
       </Modal>
 
-      <div className="md:container px-5  py-10">
-        <h2 className="title" data-aos="fade-down">
-          {skills.title}
-        </h2>
-        <h4 className="subtitle" data-aos="fade-down">
-          {skills.subtitle}
-        </h4>
+      <div className="md:container px-5 py-10">
+        <h2 className="title" data-aos="fade-down">{skills.title}</h2>
+        <h4 className="subtitle" data-aos="fade-down">{skills.subtitle}</h4>
         <br />
         <div className="flex flex-wrap gap-4 justify-center">
           {skills.skills_content.map((skill, i) => (
@@ -73,16 +58,14 @@ const Skills = () => {
               key={i}
               data-aos="fade-up"
               data-aos-delay={i * 400}
-              className="bg-white sm:cursor-pointer 
-               relative group w-full flex items-center
-                gap-5 p-5 max-w-sm rounded-md border-2 border-slate-200"
+              className="bg-white sm:cursor-pointer relative group w-full flex items-center gap-5 p-5 max-w-sm rounded-md border-2 border-slate-200"
               onClick={() => openModal(skill)}
             >
-              <div>
+              <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center">
                 <img
                   src={skill.logo}
-                  alt="..."
-                  className="w-10 group-hover:scale-125 duration-200"
+                  alt=""
+                  className="w-8 h-8 object-contain group-hover:scale-125 duration-200"
                 />
               </div>
               <div>

@@ -21,27 +21,53 @@ function App() {
   const [vis, setVis] = useState(false);
   const [show, setShow] = useState(true);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
-  const data = ["Hello", "This", "is", "Aspiring", "Developer", "Shankaranarayanansk"];
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  
+  const data = [
+    "Hello",
+    "This",
+    "is",
+    "Aspiring",
+    "Developer",
+    "Shankaranarayanansk",
+  ];
+  const data2 = ["Hello", "This", "is", "Aspiring", "Developer", "Shankar"];
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Initialize resize listener
+    window.addEventListener("resize", handleResize);
+
+    // Get current data based on screen size
+    const currentData = isMobile ? data2 : data;
+
+    // Initialize AOS
     Aos.init({
       duration: 2000,
       offset: 100,
     });
 
+    // Text animation interval
     const intervalId = setInterval(() => {
-      setSec((prevSec) => (prevSec < data.length - 1 ? prevSec + 1 : prevSec));
+      setSec((prevSec) =>
+        prevSec < currentData.length - 1 ? prevSec + 1 : prevSec
+      );
     }, 600);
 
-    setTimeout(() => {
+    // Animation timers
+    const visTimer = setTimeout(() => {
       clearInterval(intervalId);
       setVis(true);
-    }, data.length * 600 + 100);
+    }, currentData.length * 600 + 100);
 
-    setTimeout(() => {
+    const showTimer = setTimeout(() => {
       setShow(false);
-    }, data.length * 600 + 1000);
+    }, currentData.length * 600 + 1000);
 
+    // Online/Offline handlers
     const handleOnline = () => setIsOnline(true);
     const handleOffline = () => setIsOnline(false);
 
@@ -50,26 +76,30 @@ function App() {
 
     // GSAP ScrollTrigger animations
     gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('[data-scroll]').forEach(section => {
+    gsap.utils.toArray("[data-scroll]").forEach((section) => {
       gsap.from(section, {
         scrollTrigger: {
           trigger: section,
-          start: 'top 80%',
-          end: 'bottom top',
-          scrub: true
+          start: "top 80%",
+          end: "bottom top",
+          scrub: true,
         },
         opacity: 0,
         y: 50,
-        duration: 1
+        duration: 1,
       });
     });
 
+    // Cleanup function
     return () => {
       clearInterval(intervalId);
+      clearTimeout(visTimer);
+      clearTimeout(showTimer);
+      window.removeEventListener("resize", handleResize);
       window.removeEventListener("online", handleOnline);
       window.removeEventListener("offline", handleOffline);
     };
-  }, []);
+  }, [isMobile]); // Re-run effect when mobile state changes
 
   const particlesInit = async (main) => {
     await loadFull(main);
@@ -95,18 +125,18 @@ function App() {
                   value: 100,
                   density: {
                     enable: true,
-                    value_area: 800
-                  }
+                    value_area: 800,
+                  },
                 },
                 color: {
-                  value: "#ffffff"
+                  value: "#ffffff",
                 },
                 shape: {
                   type: "circle",
                   stroke: {
                     width: 0,
-                    color: "#000000"
-                  }
+                    color: "#000000",
+                  },
                 },
                 opacity: {
                   value: 0.6,
@@ -115,8 +145,8 @@ function App() {
                     enable: true,
                     speed: 1,
                     opacity_min: 0.1,
-                    sync: false
-                  }
+                    sync: false,
+                  },
                 },
                 size: {
                   value: 3,
@@ -125,8 +155,8 @@ function App() {
                     enable: true,
                     speed: 3,
                     size_min: 1,
-                    sync: false
-                  }
+                    sync: false,
+                  },
                 },
                 move: {
                   enable: true,
@@ -139,35 +169,40 @@ function App() {
                   attract: {
                     enable: false,
                     rotateX: 600,
-                    rotateY: 1200
-                  }
-                }
+                    rotateY: 1200,
+                  },
+                },
               },
               interactivity: {
                 detect_on: "canvas",
                 events: {
                   onhover: {
                     enable: false,
-                    mode: "repulse"
+                    mode: "repulse",
                   },
                   onclick: {
                     enable: false,
-                    mode: "push"
+                    mode: "push",
                   },
-                  resize: true
-                }
+                  resize: true,
+                },
               },
-              retina_detect: true
+              retina_detect: true,
             }}
           />
           {show && (
             <div
               className={`bg-primaryLinear h-screen flex justify-center items-center ${
-                vis ? "-translate-y-full duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)]" : ""
+                vis
+                  ? "-translate-y-full duration-1000 ease-[cubic-bezier(0.95,0.05,0.795,0.035)]"
+                  : ""
               }`}
             >
-              <h1 className="px-4 text-navy-700 text-[70px] font-bold text-center" id='opener'>
-                {data[sec]}
+              <h1
+                className="px-4 text-navy-700 text-[70px] font-bold text-center"
+                id="opener"
+              >
+                {isMobile ? data2[sec] : data[sec]}
               </h1>
             </div>
           )}
